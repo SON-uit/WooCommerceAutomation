@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 16px;
+            margin: 0;
+        }
+        .header {
+            text-align: center;
+            font-size: 1rem;
+        }
+        .orderContainer, .shipping {
+            display: flex;
+            flex-direction: column;
+        }
+        .orderContainer .title {
+            font-size:1rem;
+            font-weight: bold;
+        }
+        .orderLists,.shipInfo,.orderTotal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .orderLists .imgContainer {
+            height: 100%;
+            width: 10rem;
+        }
+        .imgContainer img {
+            width: 100%;
+        }
+        .orderLists span {
+            padding: 0 1rem;
+        }
+        .orderLists .price {
+            flex: 1;
+            text-align: end;
+        }
+        .shipping,.orderLists ,.orderTotal,.link{
+            padding: 1rem;
+            /* border-bottom: 1px solid #d3d3d3; */
+        }
+        .title {
+            padding: 0 1rem;
+        }
+        .shipInfo .address,
+        .shipInfo .note {
+            display: flex;
+            flex-direction:column;
+            flex:1;
+        }
+        .orderTotal > h2 {
+            flex: 1;
+            text-align: center;
+        }
+        hr {
+                border: 0;
+                clear:both;
+                display:block;
+                width:96%;              
+                background-color:#d3d3d3;
+                height: 1px;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Order Comfirmation</h1>
+        <h3>We recieved your order and we'll let you know we ship it out</h3>
+    </div>
+    <div class="orderContainer">
+        <h3 class="title"> Hi Son Nguyen</h3>
+        <h3 class="title">Your Order(XXXXXXX)</h3>
+        <hr>
+        <div class="orderLists">
+            <span>1</span>
+            <span>X</span>
+            <div class="imgContainer">
+                <img src="https://scr.vn/wp-content/uploads/2020/08/H%C3%8CNH-%E1%BA%A2NH-M%E1%BA%A0NG-%C4%90%E1%BA%B8P.jpg">
+            </div>
+            <span>Tai nghe khong day</span>
+            <span class="price">1,0000,000 vnd</span>
+        </div>
+        <hr>
+        <div class="orderLists">
+            <span>1</span>
+            <span>X</span>
+            <div class="imgContainer">
+                <img src="https://scr.vn/wp-content/uploads/2020/08/H%C3%8CNH-%E1%BA%A2NH-M%E1%BA%A0NG-%C4%90%E1%BA%B8P.jpg">
+            </div>
+            <span>Tai nghe khong day</span>
+            <span class="price">1,0000,000 vnd</span>
+        </div>
+        <hr>
+        <div class="shipping">
+            <div class="shipInfo">
+                <div class="address">
+                    <h4>Shipping Adress</h4>
+                    <span>YKSD New york City</span>
+                </div>
+                <div class="note">
+                    <h4>Note</h4>
+                    <span>giao hang dun gio giao vao gio hanh chinh tu 9 den 12 gio</span>
+                </div>
+            </div>
+            <div class="payment">
+                <h4>Payment</h4>
+                <span>Amera Express -OXXXSKSS</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="orderTotal">
+        <h2>
+            Order Total: <span>12123$</span>
+        </h2>
+    </div>
+    <hr>
+    <div class="link">
+        <a href="<%= url %>"><button>Here to back our shop</button></a>
+    </div>
+</body>
+</html>
