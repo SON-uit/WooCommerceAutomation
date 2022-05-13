@@ -24,23 +24,29 @@ const CronJob = require("cron").CronJob;
 const apiOrder = require("./api/api.order");
 const apiProduct = require("./api/api.product");
 const updateProductInStock = new CronJob(
-  "0 */1 * * * *",
+  "*/30 * * * * *",
   async function () {
     const allOrders = await apiOrder.getAllOrder({
       status: "processing",
     });
-	allOrders.forEach(async function(order) {
-		await Promise.all(order.line_items.map(async function (product) {
-			const getProduct = await apiProduct.getProductById(product.product_id);
-			console.log(getProduct.name);
-			/* const updatedProduct = await apiProduct.updateProduct(
+    const newOrder = allOrders;
+    await Promise.all(
+      newOrder.map(async function (order) {
+        for (let i = 0; i < order.line_items.length; i++) {
+          const getProduct = await apiProduct.getProductById(
+            order.line_items[i].product_id
+          );
+          order.line_items[i].mainImg = getProduct.images[0].src;
+        }
+        console.log(order);
+        /* const updatedProduct = await apiProduct.updateProduct(
 				product.product_id,
 				{
 					stock_quantity: stock_quantity
 				})
 			console.log(`${product.name} so luong ${product.quantity} gia ${product.price} tong ${product.total}`) */
-		}))
-	})
+      })
+    );
   },
   null,
   true,

@@ -84,7 +84,7 @@
             <span><%= data.line_items[i].quantity %> </span>
             <span>X</span>
             <div class="imgContainer">
-                <img src="https://scr.vn/wp-content/uploads/2020/08/H%C3%8CNH-%E1%BA%A2NH-M%E1%BA%A0NG-%C4%90%E1%BA%B8P.jpg">
+                <img src="<%= data.line_items[i].mainImg %>" alt="<%= data.line_items[i].name %>">
             </div>
             <span><%= data.line_items[i].name %> </span>
             <span class="price"><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(data.line_items[i].total) %> </span>

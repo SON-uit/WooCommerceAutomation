@@ -3,7 +3,7 @@ const catchAsync = require("../helper/catchAsync");
 const getAllOrder = async (options) => {
   const response = await wooApi.get(`orders`, options);
   //console.log(response.data[0].line_items[0])
-  response.data.forEach(el => console.log(el.date_modified))
+  //response.data.forEach(el => console.log(el.date_modified))
   return Promise.resolve(response.data);
 };
 const upDateOrderStatus = async (id) => {
@@ -23,3 +23,4 @@ module.exports = {
   upDateOrderStatus,
   deleteOrderById,
 };
+//getAllOrder({})

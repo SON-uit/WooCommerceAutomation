@@ -60,10 +60,16 @@ const getOrderAndMail = new CronJob(
       addNewOrderIdToTxt(...newOrder.map((el) => el.id));
       // send confirmMail to customer with selected orders
       await Promise.all(
-        newOrder.map(async function (el) {
-          const confirmMail = new Mail(el.billing, shopURL, el);
+        newOrder.map(async function (order) {
+          // add product image link into order line_items
+          for (let i = 0; i < order.line_items.length; i++) {
+            const getProduct = await apiProduct.getProductById(order.line_items[i].product_id);
+            order.line_items[i].mainImg = getProduct.images[0].src;
+          }
+          // send mail
+          const confirmMail = new Mail(order.billing, shopURL, order);
           await confirmMail.sendMail();
-          console.log(`Send Confirm Mail Successfully to ${el.billing.first_name} ${el.billing.last_name}`)
+          console.log(`Send Confirm Mail Successfully to ${order.billing.first_name} ${order.billing.last_name}`)
         })
       );
     }
