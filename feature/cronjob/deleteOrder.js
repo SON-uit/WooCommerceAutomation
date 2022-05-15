@@ -49,4 +49,5 @@ const job = new CronJob(
   true,
   "Asia/Ho_Chi_Minh"
 );
-//job.stop();
+console.log('Delete Overtime Order Automation Start....')
+job.start();

@@ -1,7 +1,7 @@
 const wooApi = require("../WoocommerceConnect");
 const catchAsync = require("../helper/catchAsync");
 const getAllProducts = async (pageNumber) => {
-  const response = await wooApi.get(`products/1540`, {
+  const response = await wooApi.get(`products/`, {
     page: pageNumber,
     per_page: 20,
   });

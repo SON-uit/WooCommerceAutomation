@@ -78,5 +78,6 @@ const getOrderAndMail = new CronJob(
   true,
   "Asia/Ho_Chi_Minh"
 );
+console.log('Confirm Order Automation Start....')
 getOrderAndMail.start();
 //getOrderAndMail.stop();

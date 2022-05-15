@@ -7,5 +7,23 @@
     "ejs": "^3.1.7",
     "express": "^4.18.1",
     "nodemailer": "^6.7.5"
-  }
+  },
+  "name": "lab5-woocommercecapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SON-uit/WooCommerceAutomation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SON-uit/WooCommerceAutomation/issues"
+  },
+  "homepage": "https://github.com/SON-uit/WooCommerceAutomation#readme",
+  "description": ""
 }
