@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const apiProduct = require("./api/api.product");
 const catchAsync = require("./helper/catchAsync")
 const confirmOrderAutomation = require("./feature/cronjob/confirmOrder");
@@ -7,6 +8,7 @@ const deleteOrderAutomation = require("./feature/cronjob/deleteOrder")
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors())
 app.listen(PORT, function()  {
   console.log('listening on port'+PORT);
 })

@@ -2,6 +2,7 @@
   "dependencies": {
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "cron": "^2.0.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",
@@ -11,7 +12,6 @@
   "name": "lab5-woocommercecapi",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
