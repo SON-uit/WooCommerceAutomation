@@ -47,7 +47,7 @@ const getOrderAndMail = new CronJob(
   "*/2 * * * *",
   async function () {
     const currentTime = getCurrentTime();
-    console.log(`Cronjob Start At ${currentTime}`);
+    console.log(`Cronjob Confirm Order Start At: ${currentTime}`);
     //get all processing order in schedule time
     const allOrders = await apiOrder.getAllOrder({
       status: "processing",
@@ -56,20 +56,24 @@ const getOrderAndMail = new CronJob(
     });
     const newOrder = allOrders;
     if (newOrder.length !== 0) {
-      // stored new selected order in txt 
+      // stored new selected order in txt
       addNewOrderIdToTxt(...newOrder.map((el) => el.id));
       // send confirmMail to customer with selected orders
       await Promise.all(
         newOrder.map(async function (order) {
           // add product image link into order line_items
           for (let i = 0; i < order.line_items.length; i++) {
-            const getProduct = await apiProduct.getProductById(order.line_items[i].product_id);
+            const getProduct = await apiProduct.getProductById(
+              order.line_items[i].product_id
+            );
             order.line_items[i].mainImg = getProduct.images[0].src;
           }
           // send mail
           const confirmMail = new Mail(order.billing, shopURL, order);
           await confirmMail.sendMail();
-          console.log(`Send Confirm Mail Successfully to ${order.billing.first_name} ${order.billing.last_name}`)
+          console.log(
+            `Send Confirm Mail Successfully to ${order.billing.first_name} ${order.billing.last_name}`
+          );
         })
       );
     }
@@ -78,6 +82,6 @@ const getOrderAndMail = new CronJob(
   true,
   "Asia/Ho_Chi_Minh"
 );
-console.log('Confirm Order Automation Start....')
+console.log("Confirm Order Automation Start....");
 getOrderAndMail.start();
 //getOrderAndMail.stop();
