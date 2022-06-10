@@ -52,10 +52,11 @@ const job = new CronJob(
       page: 2,
       per_page: 3,
     }); //options
-    //const productsId =  products.map(product => product.name);
     await Promise.all(
       products.map(async (product) => {
+        //create link  to go to  tiki website 
         const productLink = createLinkProduct(product);
+        // crawl product in tiki web
         const crawlerProductData = await crawler(productLink);
         crawlerProductData.salePrice = 80000;
         // update Options -> return options to update product
